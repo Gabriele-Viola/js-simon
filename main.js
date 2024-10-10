@@ -53,11 +53,12 @@ formEl.addEventListener('submit', function (e) {
     playerNumers.push(playerFirst, playerSecond, playerThird, playerFourth, playerFifth)
 
     console.log(playerNumers);
-    
 
 
-    resoultEl.innerText = correctNumbers(randomCpuNumb, playerNumers)
+
+    resoultEl.innerText = message(correctNumbers(randomCpuNumb, playerNumers), randomCpuNumb)
     console.log(correctNumbers(randomCpuNumb, playerNumers));
+    
     
 
 })
@@ -69,10 +70,22 @@ function correctNumbers(Random, user) {
     let areCorrect = []
     for (let i = 0; i < Random.length; i++) {
         if (user.indexOf(Random[i]) != -1)
-            areCorrect.push(Random[i]) 
-            element = Random[i]  
+            areCorrect.push(Random[i])
+        element = Random[i]
     }
-    return areCorrect;
+    return areCorrect
 }
 
+function message(correct, Random) {
+    let message
+    if (correct == Random) {
+        message = `You find all numbers and they are ${correct.join(' - ')}`
 
+    } else if (correct.length == 0) {
+        message = `You wrong all `
+    }else{
+
+        message =`You find ${correct.length} and they are ${correct.join(' - ')}`
+    }
+return message
+}
