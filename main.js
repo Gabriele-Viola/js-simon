@@ -18,8 +18,9 @@ function randomNum() {
         const randomNum = getRndInteger(1, 50);
         randomCpu.push(randomNum)
     }
-    return randomCpu.join(' - ')
+    return randomCpu
 }
+console.log(randomCpuNumb);
 
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -42,19 +43,22 @@ setTimeout(function () {
 }, 5000)
 formEl.addEventListener('submit', function (e) {
     e.preventDefault()
-    const playerFirst = e.target.playernumbFt.value
-    const playerSecond = e.target.playernumbScd.value
-    const playerThird = e.target.playernumbThr.value
-    const playerFourth = e.target.playernumbFth.value
-    const playerFifth = e.target.playernumbFfth.value
+    const playerFirst = Number(e.target.playernumbFt.value)
+    const playerSecond = Number(e.target.playernumbScd.value)
+    const playerThird = Number(e.target.playernumbThr.value)
+    const playerFourth = Number(e.target.playernumbFth.value)
+    const playerFifth = Number(e.target.playernumbFfth.value)
 
     let playerNumers = []
     playerNumers.push(playerFirst, playerSecond, playerThird, playerFourth, playerFifth)
 
-
+    console.log(playerNumers);
+    
 
 
     resoultEl.innerText = correctNumbers(randomCpuNumb, playerNumers)
+    console.log(correctNumbers(randomCpuNumb, playerNumers));
+    
 
 })
 
@@ -62,11 +66,13 @@ formEl.addEventListener('submit', function (e) {
 
 
 function correctNumbers(Random, user) {
-    let matches = 0;
+    let areCorrect = []
     for (let i = 0; i < Random.length; i++) {
         if (user.indexOf(Random[i]) != -1)
-            matches++;
+            areCorrect.push(Random[i]) 
+            element = Random[i]  
     }
-    return matches;
+    return areCorrect;
 }
+
 
