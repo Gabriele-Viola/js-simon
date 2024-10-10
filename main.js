@@ -18,10 +18,14 @@ function randomNum() {
         const randomNum = getRndInteger(1, 50);
         randomCpu.push(randomNum)
     }
-    return randomCpu
+    return randomCpu.join(' - ')
 }
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min) ) + min;
 }
 
+let FirstNumEl = document.getElementById('firstNum')
+
+
+FirstNumEl.innerText = randomCpuNumb
