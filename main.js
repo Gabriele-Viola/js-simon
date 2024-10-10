@@ -37,7 +37,7 @@ const formEl = document.querySelector('form')
 
 
 setTimeout(function () {
-    // FirstNumEl.classList.add('d-none')
+    FirstNumEl.classList.add('d-none')
     formEl.classList.remove('d-none')
 
 }, 5000)
