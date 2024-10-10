@@ -11,7 +11,7 @@ Immaginate la logica come fosse uno snack: "Dati 2 array di numeri, indica quali
 */
 
 let randomCpuNumb = randomNum()
-
+let resoultEl = document.getElementById('result')
 function randomNum() {
     let randomCpu = []
     for (let i = 0; i < 5; i++) {
@@ -32,17 +32,14 @@ FirstNumEl.innerText = randomCpuNumb
 
 const formEl = document.querySelector('form')
 
-function correctNumbers(randomCpuNumb, playerNumers) {
-    const matches = 0;
-    let areCorrect = []
-    let message = `You matches ${matches}, they are ${areCorrect.join(' - ')}`
-    for (i = 0; i < randomCpuNumb.length; i++) {
-        if (playerNumers.include(randomCpuNumb[i]))
-            matches++;
-            areCorrect.push(playerNumers)
-    }
-    return message;
-}
+
+
+
+setTimeout(function () {
+    // FirstNumEl.classList.add('d-none')
+    formEl.classList.remove('d-none')
+
+}, 5000)
 formEl.addEventListener('submit', function (e) {
     e.preventDefault()
     const playerFirst = e.target.playernumbFt.value
@@ -53,12 +50,23 @@ formEl.addEventListener('submit', function (e) {
 
     let playerNumers = []
     playerNumers.push(playerFirst, playerSecond, playerThird, playerFourth, playerFifth)
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+    resoultEl.innerText = correctNumbers(randomCpuNumb, playerNumers)
+
 })
+
+
+
+
+function correctNumbers(Random, user) {
+    let matches = 0;
+    for (let i = 0; i < Random.length; i++) {
+        if (user.indexOf(Random[i]) != -1)
+            matches++;
+    }
+    return matches;
+}
 
