@@ -12,18 +12,7 @@ Immaginate la logica come fosse uno snack: "Dati 2 array di numeri, indica quali
 
 let randomCpuNumb = randomNum(5)
 let resoultEl = document.getElementById('result')
-function randomNum(repeat) {
-    let randomCpu = []
-    for (let i = 0; i < repeat; i++) {
-        const randomNum = getRndInteger(1, 50);
-        if (randomCpu.includes(randomNum)) {
-            repeat = repeat + 1
-        }else{
-            randomCpu.push(randomNum)            
-        }
-    }
-    return randomCpu
-}
+
 console.log(randomCpuNumb);
 
 function getRndInteger(min, max) {
@@ -67,7 +56,18 @@ formEl.addEventListener('submit', function (e) {
 
 })
 
-
+function randomNum(repeat) {
+    let randomCpu = []
+    for (let i = 0; i < repeat; i++) {
+        const randomNum = getRndInteger(1, 50);
+        if (randomCpu.includes(randomNum)) {
+            repeat = repeat + 1
+        }else{
+            randomCpu.push(randomNum)            
+        }
+    }
+    return randomCpu
+}
 
 
 function correctNumbers(Random, user) {
@@ -82,7 +82,7 @@ function correctNumbers(Random, user) {
 
 function message(correct, Random) {
     let message
-    if (correct == Random) {
+    if (correct === Random) {
         message = `You find all numbers and they are ${correct.join(' - ')}`
 
     } else if (correct.length == 0) {
