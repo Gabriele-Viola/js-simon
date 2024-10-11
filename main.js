@@ -10,13 +10,17 @@ Se l’utente ha inserito qualcosa di non valido, segnaliamolo visivamente nel f
 Immaginate la logica come fosse uno snack: "Dati 2 array di numeri, indica quali e quanti numeri ci sono in comune tra i due array"
 */
 
-let randomCpuNumb = randomNum()
+let randomCpuNumb = randomNum(5)
 let resoultEl = document.getElementById('result')
-function randomNum() {
+function randomNum(repeat) {
     let randomCpu = []
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < repeat; i++) {
         const randomNum = getRndInteger(1, 50);
-        randomCpu.push(randomNum)
+        if (randomCpu.includes(randomNum)) {
+            repeat = repeat + 1
+        }else{
+            randomCpu.push(randomNum)            
+        }
     }
     return randomCpu
 }
